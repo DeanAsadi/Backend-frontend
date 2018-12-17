@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import ReadProducts from "./src/components/readProducts/ReadProducts";
-import DeleteProduct from "./src/components/deleteProduct/DeleteProduct";
-import CreateProduct from "./src/components/createProduct/CreateProduct";
+import ReadProducts from "./readProducts/ReadProducts";
+import DeleteProduct from "./deleteProduct/DeleteProduct";
+import CreateProduct from "./createProduct/CreateProduct";
 
 export default (
   <Switch>
