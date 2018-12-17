@@ -25,6 +25,8 @@ module.exports = {
   },
   delete: (req, res, next) => {
     const db = req.app.get("db");
-    db.delete_product;
+    db.delete_product()
+      .then(() => res.status(200))
+      .catch(err => console.log("DELETE  Product Error ", err));
   }
 };
