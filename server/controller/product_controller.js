@@ -23,8 +23,8 @@ module.exports = {
   update: (req, res, next) => {
     const db = req.app.get("db");
     const { params, query } = req;
-    console.log("query.d", query.d);
-    db.update_product([params.id, query.d])
+
+    db.update_product([params.id, query.desc])
       .then(() => res.sendStatus(200))
       .catch(err => console.log("UPDATE  Product Error ", err));
   },
