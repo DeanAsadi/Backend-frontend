@@ -1,7 +1,8 @@
 module.exports = {
   create: (req, res, next) => {
     const db = req.app.get("db");
-    db.create_product()
+    const { name, description, price, image_url } = req.body;
+    db.create_product([name, description, price, image_url])
       .then(() => res.sendStatus(200))
       .catch(err => console.log("Create Product Error ", err));
   },
