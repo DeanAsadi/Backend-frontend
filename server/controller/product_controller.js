@@ -14,20 +14,26 @@ module.exports = {
   },
   getOne: (req, res, next) => {
     const db = req.app.get("db");
-    db.read_product()
+    const { id } = req.params;
+    db.read_product(id)
       .then(product => res.status(200).send(product))
       .catch(err => console.log("READ ONE Product Error ", err));
   },
+
   update: (req, res, next) => {
     const db = req.app.get("db");
-    db.update_product()
+    const { params, query } = req;
+    console.log("query.d", query.d);
+    db.update_product([params.id, query.d])
       .then(() => res.sendStatus(200))
       .catch(err => console.log("UPDATE  Product Error ", err));
   },
+
   delete: (req, res, next) => {
     const db = req.app.get("db");
-    db.delete_product()
-      .then(() => res.stsendStatusatus(200))
+    const { id } = req.params;
+    db.delete_product(id)
+      .then(() => res.sendStatus(200))
       .catch(err => console.log("DELETE  Product Error ", err));
   }
 };
