@@ -2,7 +2,7 @@ module.exports = {
   create: (req, res, next) => {
     const db = req.app.get("db");
     db.create_product()
-      .then(() => res.status(200))
+      .then(() => res.sendStatus(200))
       .catch(err => console.log("Create Product Error ", err));
   },
   getAll: (req, res, next) => {
@@ -20,13 +20,13 @@ module.exports = {
   update: (req, res, next) => {
     const db = req.app.get("db");
     db.update_product()
-      .then(() => res.status(200))
+      .then(() => res.sendStatus(200))
       .catch(err => console.log("UPDATE  Product Error ", err));
   },
   delete: (req, res, next) => {
     const db = req.app.get("db");
     db.delete_product()
-      .then(() => res.status(200))
+      .then(() => res.stsendStatusatus(200))
       .catch(err => console.log("DELETE  Product Error ", err));
   }
 };
