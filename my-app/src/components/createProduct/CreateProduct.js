@@ -51,6 +51,12 @@ class CreateProduct extends Component {
             onChange={this.handleChange}
             placeholder="Price "
           />
+          <input
+            name="description"
+            vallue={description}
+            onChange={this.handleChange}
+            placeholder="description "
+          />
           <button>Add Product</button>
         </form>
       </div>
