@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+import "./readProducts.css";
+
 class ReadProducts extends Component {
   constructor() {
     super();
@@ -26,7 +28,7 @@ class ReadProducts extends Component {
     ) : (
       products.map((elm, ind) => {
         return (
-          <div key={ind} className=" displayProducts ">
+          <div key={ind}>
             {elm.name}
             <br />
             {elm.description} <br />
@@ -37,7 +39,7 @@ class ReadProducts extends Component {
       })
     );
 
-    return <div>{displayProducts}</div>;
+    return <div className="displayProducts">{displayProducts}</div>;
   }
 }
 export default ReadProducts;
