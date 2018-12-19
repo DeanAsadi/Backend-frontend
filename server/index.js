@@ -2,12 +2,14 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const massive = require("massive");
+const cors = require("cors");
 
 const productCtrl = require("./controller/product_controller");
 
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cors());
 
 massive(process.env.CONNECTION_STRING)
   .then(db => {

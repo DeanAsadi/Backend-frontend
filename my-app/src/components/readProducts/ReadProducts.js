@@ -26,7 +26,7 @@ class ReadProducts extends Component {
     ) : (
       products.map((elm, ind) => {
         return (
-          <div key={ind}>
+          <div key={ind} className=" displayProducts ">
             {elm.name}
             <br />
             {elm.description} <br />
