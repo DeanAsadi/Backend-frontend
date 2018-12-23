@@ -19,19 +19,21 @@ class CreateProduct extends Component {
       productName: [],
       description: "",
       image_url: "",
-      price: 0
+      price: 0,
+      id: ""
     });
   };
 
   onSubmitHandeler = e => {
     e.preventDefault();
-    const { productName, description, image_url, price } = this.state;
+    const { productName, description, image_url, price, id } = this.state;
     if ((productName, description, image_url, price)) {
       axios.post("http://localhost:4000/api/product", {
         name: productName,
         description,
         image_url,
-        price
+        price,
+        product_id: id
       });
     }
   };
