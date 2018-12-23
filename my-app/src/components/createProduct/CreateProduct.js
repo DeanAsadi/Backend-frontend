@@ -5,9 +5,9 @@ class CreateProduct extends Component {
   constructor() {
     super();
     this.state = {
-      product: "",
+      productName: "",
       description: "",
-      imageUrl: "",
+      image_url: "",
       price: 0
     };
   }
@@ -17,31 +17,31 @@ class CreateProduct extends Component {
 
   onSubmitHandeler = e => {
     e.preventDefault();
-    const { product, description, imageUrl, price } = this.state;
-    if ((product, description, imageUrl, price)) {
+    const { productName, description, image_url, price } = this.state;
+    if ((productName, description, image_url, price)) {
       axios.post("http://localhost:4000/api/product", {
-        product,
+        name: productName,
         description,
-        imageUrl,
+        image_url,
         price
       });
     }
   };
 
   render() {
-    const { product, description, imageUrl, price } = this.state;
+    const { productName, description, image_url, price } = this.state;
     return (
       <div>
         <form onClick={this.onSubmitHandeler}>
           <input
-            name="product"
-            value={product}
+            name="productName"
+            value={productName}
             onChange={this.handleChange}
-            placeholder="Product"
+            placeholder="productName"
           />
           <input
-            name="imageUrl"
-            value={imageUrl}
+            name="image_url"
+            value={image_url}
             onChange={this.handleChange}
             placeholder=" Image"
           />
