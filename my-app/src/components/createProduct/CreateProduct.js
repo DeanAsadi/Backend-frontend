@@ -14,6 +14,14 @@ class CreateProduct extends Component {
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+  setCancel = () => {
+    this.setState({
+      productName: [],
+      description: "",
+      image_url: "",
+      price: 0
+    });
+  };
 
   onSubmitHandeler = e => {
     e.preventDefault();
