@@ -1,21 +1,39 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
 
 //Components-------------------------------
 import "./App.css";
-import routes from "../src/components/routes";
+import ReadProducts from "./components/readProducts/ReadProducts";
+import CreateProduct from "./components/createProduct/CreateProduct";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      products: []
+    };
+  }
+  componentDidMount() {
+    this.getProducts();
+  }
+  getProducts = () => {
+    axios.get(`http://localhost:4000/api/products`).then(res => {
+      this.setState({ products: res.data });
+    });
+  };
+
   render() {
+    console.log("from App--->", this.state.products);
     return (
       <div className="App">
-        <Link to="/home">
-          <button> Products </button>
-        </Link>
-        <Link to="/newProduct">
-          <button> New Product </button>
-        </Link>
-        {routes}
+        <ReadProducts
+          products={this.state.products}
+          getAllProductsFunc={this.getProducts()}
+        />
+        <CreateProduct
+          products={this.state.products}
+          getAllProductsFunc={this.getProducts()}
+        />
       </div>
     );
   }

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import "./readProducts.css";
-import CreateProduct from "../createProduct/CreateProduct";
 
 class ReadProducts extends Component {
   constructor(props) {
@@ -15,7 +14,6 @@ class ReadProducts extends Component {
   };
 
   render() {
-    console.log(this.state.products);
     return <div className="displayProducts" />;
   }
 }

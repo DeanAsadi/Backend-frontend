@@ -6,7 +6,6 @@ class CreateProduct extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [],
       name: "",
       discription: "",
       price: 0,
@@ -38,7 +37,7 @@ class CreateProduct extends Component {
 
   render() {
     const { name, discription, price, image_url, products } = this.state;
-    console.log("products--> ", products);
+
     return (
       <div>
         <form onSubmit={this.onSubmitHandeler}>
