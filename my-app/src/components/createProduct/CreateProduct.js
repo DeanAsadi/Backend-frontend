@@ -30,7 +30,7 @@ class CreateProduct extends Component {
           image_url
         })
         .then(() => {
-          this.getProducts();
+          this.props.history.replace("/home");
         })
         .catch(err => console.log("POST err--->", err));
     }
