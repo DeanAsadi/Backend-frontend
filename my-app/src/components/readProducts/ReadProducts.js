@@ -6,7 +6,11 @@ class ReadProducts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      editting: false
+      editting: false,
+      productName: "",
+      productDesc: "",
+      productPrice: "",
+      productImage: ""
     };
   }
 
@@ -29,8 +33,12 @@ class ReadProducts extends Component {
   handleEdit = () => {
     this.setState({ editting: !this.state.editting });
   };
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
   render() {
+    const { productDesc, productImage, productName, productPrice } = this.state;
     const { allProducts } = this.props;
     const displayProducts = allProducts.map((elm, ind) => {
       return (
@@ -47,7 +55,49 @@ class ReadProducts extends Component {
     });
     return (
       <div className="displayProducts">
-        {this.state.editting ? <input /> : displayProducts}
+        {this.state.editting ? (
+          <div>
+            <input
+              name="productName"
+              value={productName}
+              onChange={this.handleChange}
+              placeholder="Product Name"
+            />
+            <input
+              name="productPrice"
+              value={productPrice}
+              onChange={this.handleChange}
+              placeholder="ProductPrice"
+            />
+            <input
+              name="productDesc"
+              value={productDesc}
+              onChange={this.handleChange}
+              placeholder="Product Desc"
+            />
+            <input
+              name="productImage"
+              value={productImage}
+              onChange={this.handleChange}
+              placeholder="ProductImage"
+            />
+
+            <button
+              onClick={id =>
+                this.handleUpdateProduct(
+                  productName,
+                  productPrice,
+                  productDesc,
+                  productImage
+                )
+              }
+            >
+              Update
+            </button>
+          </div>
+        ) : (
+          displayProducts
+        )}
       </div>
     );
   }
