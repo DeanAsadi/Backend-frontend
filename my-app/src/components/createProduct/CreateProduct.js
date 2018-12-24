@@ -5,7 +5,7 @@ class CreateProduct extends Component {
   constructor() {
     super();
     this.state = {
-      productName: "",
+      name: "",
       description: "",
       image_url: "",
       price: 0
@@ -14,40 +14,34 @@ class CreateProduct extends Component {
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
-  setCancel = () => {
-    this.setState({
-      productName: [],
-      description: "",
-      image_url: "",
-      price: 0,
-      id: ""
-    });
-  };
 
   onSubmitHandeler = e => {
     e.preventDefault();
-    const { productName, description, image_url, price, id } = this.state;
-    if ((productName, description, image_url, price)) {
-      axios.post("http://localhost:4000/api/product", {
-        name: productName,
-        description,
-        image_url,
-        price,
-        product_id: id
-      });
+    const { name, description, image_url, price } = this.state;
+    if ((name, description, image_url, price)) {
+      axios
+        .post("/api/product", {
+          name,
+          description,
+          image_url,
+          price
+        })
+        .then(() => {
+          this.props.history.replace("/home");
+        });
     }
   };
 
   render() {
-    const { productName, description, image_url, price } = this.state;
+    const { name, description, image_url, price } = this.state;
     return (
       <div>
         <form onClick={this.onSubmitHandeler}>
           <input
-            name="productName"
-            value={productName}
+            name="name"
+            value={name}
             onChange={this.handleChange}
-            placeholder="productName"
+            placeholder="name"
           />
           <input
             name="image_url"

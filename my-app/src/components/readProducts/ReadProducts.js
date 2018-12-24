@@ -4,8 +4,8 @@ import axios from "axios";
 import "./readProducts.css";
 
 class ReadProducts extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       products: [],
       isLoading: false
@@ -20,16 +20,10 @@ class ReadProducts extends Component {
       .catch(err => console.log("ERROR---->", err));
   }
 
-  deleteProductHandeler = product_id => {
-    console.log("product_id-->", product_id);
-    axios
-      .delete(`http://localhost:4000/api/product/${product_id}`)
-      .then(response => {
-        this.setState({ products: response.data });
-      })
-      .catch(err => {
-        console.log("err---> ", err);
-      });
+  deleteProductHandeler = id => {
+    axios.delete(`http://localhost:4000/api/product/${id}`).then(() => {
+      window.location.reload(); // To reload page after delete
+    });
   };
 
   render() {
@@ -46,7 +40,7 @@ class ReadProducts extends Component {
             {elm.description} <br />
             {elm.price} <br />
             {elm.image_url} <br />
-            <button onClick={() => this.deleteProductHandeler(elm.product_id)}>
+            <button onClick={id => this.deleteProductHandeler(elm.product_id)}>
               Delete
             </button>
           </div>
