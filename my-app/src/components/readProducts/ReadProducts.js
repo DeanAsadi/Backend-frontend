@@ -7,7 +7,18 @@ import CreateProduct from "../createProduct/CreateProduct";
 class ReadProducts extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      products: []
+    };
+  }
+  getProducts = () => {
+    axios.get(`http://localhost:4000/api/products`).then(res => {
+      this.setState({ products: res.data });
+    });
+  };
+
+  componentDidMount() {
+    this.getProducts();
   }
 
   handleChange = e => {
@@ -15,6 +26,7 @@ class ReadProducts extends Component {
   };
 
   render() {
+    console.log(this.state.products);
     return <div className="displayProducts" />;
   }
 }
