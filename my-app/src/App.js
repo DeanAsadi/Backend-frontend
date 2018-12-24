@@ -13,9 +13,7 @@ class App extends Component {
       products: []
     };
   }
-  componentDidMount() {
-    this.getProducts();
-  }
+
   getProducts = () => {
     axios.get(`http://localhost:4000/api/products`).then(res => {
       this.setState({ products: res.data });
@@ -23,17 +21,18 @@ class App extends Component {
   };
 
   render() {
-    console.log("from App--->", this.state.products);
     return (
-      <div className="App">
+      <div>
         <ReadProducts
-          products={this.state.products}
-          getAllProductsFunc={this.getProducts()}
+          allProducts={this.state.products}
+          getAllProductsFunc={this.getProducts}
         />
+        <br />
         <CreateProduct
-          products={this.state.products}
-          getAllProductsFunc={this.getProducts()}
+          allProducts={this.state.products}
+          getAllProductsFunc={this.getProducts}
         />
+        <br />
       </div>
     );
   }
