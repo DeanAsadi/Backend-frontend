@@ -43,7 +43,7 @@ class ReadProducts extends Component {
 
   render() {
     const { productDesc, productImage, productName, productPrice } = this.state;
-    console.log("name-->", typeof productName);
+    console.log("name-->", productName);
     const { allProducts } = this.props;
     const displayProducts = allProducts.map((elm, ind) => {
       return (
